@@ -3,13 +3,28 @@ $primary: purple;
 $primary-dark: rgb(100, 0, 100);
 $secondary: yellow;
 
+$text-dark: rgba(255, 255, 255, 0.87);
+$bg-dark: #242424;
+
 // Fonts
 $base-font: "Work Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;
 $heading-font: "Oswald", sans-serif;
+
+// Typography
+$line-height-base: 1.5;
+$line-height-heading: 1.1;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+
+$h1-font-size: 3.2em;
+$h1-line-height: 1;
 
 // Breakpoints
 $mobile-breakpoint: 768px;
 $desktop-breakpoint: 960px;
 
-$text-dark: rgba(255, 255, 255, 0.87);
-$bg-dark: #242424;
+// Layout
+$page-max-width: 960px;
+$app-min-width: 320px;
+$border-radius: 8px;

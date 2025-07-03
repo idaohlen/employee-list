@@ -17,15 +17,14 @@
 defineProps(["employees"]);
 </script>
 
-<style>
+<style lang="scss">
 .employees-list {
   width: 100%;
   margin-inline: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
-  background: #fff2f2;
-  padding: 1rem;
+  margin-block: 2rem;
 }
 
 .employee-card {
@@ -44,7 +43,9 @@ defineProps(["employees"]);
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 50%;
-  background: red;
+  border: 4px solid transparent;
+  outline: 2px solid rgb(200, 200, 200);
+  box-shadow: 0px 0px 10px rgb(235, 232, 231);
 
   img {
     width: 100%;

@@ -1,5 +1,6 @@
 <template>
-  <div class="page-wrapper">
+  <SiteHeader />
+  <main class="page-wrapper">
     <h1>Våra medarbetare</h1>
     <p>
       Vi har för närvarande {{ totalEntries }} fantastiska anställda som arbetar
@@ -13,13 +14,16 @@
       :available-pages="availablePages"
       @goto="page => goToPage(page)"
     />
-  </div>
+  </main>
+  <SiteFooter />
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import Pagination from "./components/Pagination.vue";
 import EmployeesList from "./components/EmployeesList.vue";
+import SiteHeader from "./components/SiteHeader.vue";
+import SiteFooter from "./components/SiteFooter.vue";
 
 const employees = ref([]);
 const totalEntries = ref(0);
@@ -96,11 +100,3 @@ onUnmounted(() => {
   window.removeEventListener("resize", handleResize);
 });
 </script>
-
-<style scoped>
-.page-wrapper {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-</style>

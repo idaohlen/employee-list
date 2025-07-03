@@ -22,7 +22,7 @@
     </button>
     <button
       @click="$emit('goto', currentPage + 1)"
-      :disabled="currentPage >= availablePages"
+      :disabled="currentPage >= lastPage"
     >
       Framåt
     </button>
@@ -39,19 +39,23 @@
 defineProps(["currentPage", "lastPage", "availablePages"]);
 </script>
 
-<style>
+<style lang="scss">
 .pagination {
   display: flex;
   flex-wrap: wrap;
   margin-inline: auto;
   padding: 2rem;
+  gap: .2rem;
 }
 
 .pagination-btn {
-  background: red;
+  width: 2.5rem;
+  padding: .5rem;
+  font-size: .89rem;
 
   &.active {
-    background: blue;
+    background: $primary;
+    color: white;
   }
 }
 </style>

@@ -1,7 +1,11 @@
+@use "_variables" as *;
+@use "_mixins" as *;
+
 :root {
   font-family: $base-font;
-  line-height: 1.5;
-  font-weight: 400;
+  line-height: $line-height-base;
+  font-weight: $font-weight-normal;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,33 +26,34 @@
 }
 
 a {
-  font-weight: 500;
+  font-weight: $font-weight-medium;
   color: $primary;
   text-decoration: inherit;
   
   &:hover {
-    color: #747bff;
+    color: $primary-dark;
     
     @include dark {
-      color: $primary-dark;
+      color: $primary;
     }
   }
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  min-width: $app-min-width;
   min-height: 100vh;
 }
 
 h1 {
-  font-family: "Oswald", sans-serif;
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: $heading-font;
+  font-size: $h1-font-size;
+  line-height: $h1-line-height;
+  margin-block-end: .5rem;
 }
 
 button, .btn {
-  border-radius: 8px;
+  border-radius: $border-radius;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -74,6 +79,19 @@ button, .btn {
       color: white;
     }
   }
+
+  &:disabled {
+    color: gray;
+
+        &:hover {
+      border-color: transparent;
+      color: gray;
+      
+      @include dark {
+        color: gray;
+      }
+    }
+  }
   
   &:focus,
   &:focus-visible {
@@ -86,20 +104,22 @@ button, .btn {
 }
 
 #app {
-  max-width: 960px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+.page-wrapper {
+  width: 100%;
+  max-width: $page-max-width;
+  margin-inline: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-dark {
+  color: white;
+
+  a {
+    color: white;
   }
 }

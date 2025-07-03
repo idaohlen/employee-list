@@ -1,6 +1,12 @@
 <template>
   <div class="pagination">
     <button
+      @click="$emit('goto', 1)"
+      :disabled="currentPage === 1"
+    >
+      Första
+    </button>
+    <button
       @click="$emit('goto', currentPage - 1)"
       :disabled="currentPage <= 1"
     >
@@ -20,17 +26,25 @@
     >
       Framåt
     </button>
+    <button
+      @click="$emit('goto', lastPage)"
+      :disabled="currentPage === lastPage"
+    >
+      Sista
+    </button>
   </div>
 </template>
 
 <script setup>
-defineProps(["currentPage", "availablePages"]);
+defineProps(["currentPage", "lastPage", "availablePages"]);
 </script>
 
 <style>
 .pagination {
   display: flex;
   flex-wrap: wrap;
+  margin-inline: auto;
+  padding: 2rem;
 }
 
 .pagination-btn {

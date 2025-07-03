@@ -6,6 +6,7 @@
       </div>
       <div class="employee-info">
         <div class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</div>
+        <div class="employee-department">{{ employee.company.title }} - {{ employee.company.department }}</div>
         <a :href="'mailto:' + employee.email" class="contact-btn">Kontakta {{ employee.firstName }}</a>
       </div>
     </div>
@@ -53,7 +54,9 @@ defineProps(["employees"]);
 }
 
 .employee-info {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: .5rem;
 }
 

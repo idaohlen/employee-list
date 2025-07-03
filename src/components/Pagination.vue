@@ -3,14 +3,18 @@
     <button
       @click="$emit('goto', 1)"
       :disabled="currentPage === 1"
+      aria-label="Första sidan"
+      v-tooltip="'Första'"
     >
-      Första
+      <Icon icon="lucide:chevrons-left" class="icon" />
     </button>
     <button
       @click="$emit('goto', currentPage - 1)"
       :disabled="currentPage <= 1"
+      aria-label="Föregående sida"
+      v-tooltip="'Föregående'"
     >
-      Bakåt
+      <Icon icon="lucide:chevron-left" class="icon" />
     </button>
     <button
       v-for="page in availablePages"
@@ -23,19 +27,25 @@
     <button
       @click="$emit('goto', currentPage + 1)"
       :disabled="currentPage >= lastPage"
+      aria-label="Nästa sida"
+      v-tooltip="'Nästa'"
     >
-      Framåt
+      <Icon icon="lucide:chevron-right" class="icon" />
     </button>
     <button
       @click="$emit('goto', lastPage)"
       :disabled="currentPage === lastPage"
+      aria-label="Sista sidan"
+      v-tooltip="'Sista'"
     >
-      Sista
+      <Icon icon="lucide:chevrons-right" class="icon" />
     </button>
   </div>
 </template>
 
 <script setup>
+import { Icon } from "@iconify/vue";
+
 defineProps(["currentPage", "lastPage", "availablePages"]);
 </script>
 

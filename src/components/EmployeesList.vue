@@ -7,13 +7,18 @@
       <div class="employee-info">
         <div class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</div>
         <div class="employee-department">{{ employee.company.title }} - {{ employee.company.department }}</div>
-        <a :href="'mailto:' + employee.email" class="btn">Kontakta {{ employee.firstName }}</a>
+        <a :href="'mailto:' + employee.email" class="btn">
+          <Icon icon="lucide:mail" class="icon" />
+          Kontakta {{ employee.firstName }}
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { Icon } from "@iconify/vue";
+
 defineProps(["employees"]);
 </script>
 

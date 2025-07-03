@@ -7,7 +7,7 @@
       Bakåt
     </button>
     <button
-      v-for="page in totalPages"
+      v-for="page in availablePages"
       :key="page"
       @click="$emit('goto', page)"
       :class="['pagination-btn', { active: page === currentPage }]"
@@ -16,7 +16,7 @@
     </button>
     <button
       @click="$emit('goto', currentPage + 1)"
-      :disabled="currentPage >= totalPages"
+      :disabled="currentPage >= availablePages"
     >
       Framåt
     </button>
@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-defineProps(["currentPage", "totalPages"]);
+defineProps(["currentPage", "availablePages"]);
 </script>
 
 <style>

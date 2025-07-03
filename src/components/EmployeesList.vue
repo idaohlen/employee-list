@@ -7,7 +7,7 @@
       <div class="employee-info">
         <div class="employee-name">{{ employee.firstName }} {{ employee.lastName }}</div>
         <div class="employee-department">{{ employee.company.title }} - {{ employee.company.department }}</div>
-        <a :href="'mailto:' + employee.email" class="contact-btn">Kontakta {{ employee.firstName }}</a>
+        <a :href="'mailto:' + employee.email" class="btn">Kontakta {{ employee.firstName }}</a>
       </div>
     </div>
   </div>
@@ -62,12 +62,5 @@ defineProps(["employees"]);
 
 .employee-name {
   font-weight: 600;
-}
-
-.contact-btn {
-  background: blue;
-  color: white;
-  padding: .5rem 1rem;
-  border-radius: 4px;
 }
 </style>

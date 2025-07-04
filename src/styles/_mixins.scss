@@ -1,18 +1,12 @@
 @use "sass:color";
 
 @mixin dark {
-  @media (prefers-color-scheme: dark) {
+  .dark-theme & {
     @content;
   }
 }
 
-@mixin light {
-  @media (prefers-color-scheme: light) {
-    @content;
-  }
-}
-
-@mixin btn-variant($bg-color, $text-color: white) {
+@mixin btn-variant($bg-color, $text-color: white, $bg-color-dark: null) {
   background-color: $bg-color;
   color: $text-color;
   
@@ -20,5 +14,16 @@
     background-color: color.adjust($bg-color, $lightness: 7%);
     border-color: $bg-color;
     color: $text-color;
+  }
+  
+  @if $bg-color-dark {
+    @include dark {
+      background-color: $bg-color-dark;
+      
+      &:hover {
+        background-color: color.adjust($bg-color-dark, $lightness: 7%);
+        border-color: $bg-color-dark;
+      }
+    }
   }
 }

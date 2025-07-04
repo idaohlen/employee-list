@@ -40,10 +40,15 @@ defineProps(["employees"]);
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  border: 1px solid #dedede;
+  border: 1px solid $border-color;
   border-radius: 4px;
-  background: white;
   text-align: center;
+  background: $card-bg;
+
+  @include dark {
+    background: $card-bg--dark;
+    border-color: $border-color--dark;
+  }
 }
 
 .employee-image {
@@ -54,12 +59,16 @@ defineProps(["employees"]);
   border-radius: 50%;
   border: 4px solid transparent;
   outline: 2px solid rgb(200, 200, 200);
-  box-shadow: 0px 0px 10px rgb(235, 232, 231);
+  background: white;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  @include dark {
+    outline-color: transparent;
   }
 }
 
@@ -80,6 +89,9 @@ defineProps(["employees"]);
   color: $primary;
   font-weight: 500;
 
+  @include dark {
+    color: $primary--dark;
+  }
 }
 
 .employee-department {

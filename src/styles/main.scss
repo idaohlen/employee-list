@@ -13,13 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
   
   color-scheme: light dark;
-  color: #213547;
-  background-color: #ffffff;
-  
-  @include dark {
-    color: $text-dark;
-    background-color: $bg-dark;
-  }
+  color: $text-color;
+  background-color: $bg-color;
+}
+
+.dark-theme {
+  color-scheme: dark;
+  color: $text-color--dark;
+  background-color: $bg-color--dark;
 }
 
 *, *::before, *::after {
@@ -51,7 +52,7 @@ a {
     color: color.adjust($primary, $lightness: 10%);
     
     @include dark {
-      color: $primary;
+      color: color.adjust($primary--dark, $lightness: 10%);
     }
   }
 }
@@ -71,11 +72,11 @@ a {
   flex-direction: column;
 }
 
-// Components
-
-.card {
-  padding: 2rem;
+.dark-theme {
+  color-scheme: dark;
 }
+
+// Components
 
 button, .btn {
   border-radius: $border-radius;
@@ -92,21 +93,20 @@ button, .btn {
   align-items: center;
   
   // Light mode
-  background-color: #f9f9f9;
-  color: #213547;
+  background-color: $surface-color;
+  color: $text-color;
 
+  @include dark {
+    background-color: $surface-color--dark;
+    color: $text-color--dark;
+  }
+  
   &:hover {
-    color: #1a1a1a;
     border-color: $primary;
 
     @include dark {
-      color: white;
+      border-color: $primary--dark;
     }
-  }
-  
-  @include dark {
-    background-color: #1a1a1a;
-    color: white;
   }
 
   &.btn-sm {
@@ -114,18 +114,21 @@ button, .btn {
   }
 
   &.btn-primary {
-    @include btn-variant($primary, white);
+    @include btn-variant($primary, white, $primary--dark);
   }
   
   &.btn-secondary {
-    @include btn-variant($secondary, white);
+    @include btn-variant($secondary, white, $secondary--dark);
   }
 
   &.btn-icon {
-    padding: .4em;
+    padding: .6em;
     background: transparent;
     color: white;
-    font-size: 1.2rem;
+
+    .icon {
+      font-size: 1.2em;
+    }
 
     &:hover {
       color: white;
@@ -137,11 +140,9 @@ button, .btn {
   &:disabled {
     opacity: .4;
     $color: #9f9f9f;
-    // color: $color;
 
     &:hover {
       border-color: transparent;
-      // color: $color;
       cursor: default;
       
       @include dark {

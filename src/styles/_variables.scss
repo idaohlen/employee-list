@@ -11,12 +11,29 @@ $breakpoint-xs: 600px;
 $breakpoint-sm: 768px;
 $breakpoint-md: 960px;
 
-// Color palette
+// Light theme colors
 $primary: #00957f;
 $secondary: #df4f5f;
+$border-color: #e5e7eb;
+$text-color: #213547;
+$surface-color: #f8f9fa;
+$bg-color: #ffffff;
 
-$text-dark: rgba(255, 255, 255, 0.87);
-$bg-dark: #242424;
+$header-bg: $primary;
+$footer-bg: $primary;
+$card-bg: white;
+
+// Dark theme colors
+$primary--dark: #00c099;
+$secondary--dark: #295672;
+$text-color--dark: rgba(255, 255, 255, 0.87);
+$bg-color--dark: #1f2937;
+$surface-color--dark: #141d29;
+$border-color--dark: #1a222e;
+
+$header-bg--dark: $surface-color--dark;
+$footer-bg--dark: $surface-color--dark;
+$card-bg--dark: $surface-color--dark;
 
 // Fonts
 $base-font: "Work Sans", system-ui, Avenir, Helvetica, Arial, sans-serif;

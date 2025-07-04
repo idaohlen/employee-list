@@ -15,13 +15,17 @@ import { Icon } from "@iconify/vue";
 <style lang="scss" scoped>
 
 .footer {
-  background: $primary;
+  background: $footer-bg;
   padding: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   gap: .5rem;
+
+  @include dark {
+    background: $footer-bg--dark;
+  }
 }
 
 .btn-icon {

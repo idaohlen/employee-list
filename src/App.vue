@@ -1,21 +1,23 @@
 <template>
-  <SiteHeader />
-  <main class="page-wrapper">
-    <h1>Våra medarbetare</h1>
-    <p>
-      Vi har för närvarande <b>{{ totalEntries }}</b> fantastiska anställda som arbetar
-      hos oss!
-    </p>
+  <div :class="['site-wrapper', { 'dark-theme': isDarkMode }]">
+    <SiteHeader @toggle-theme="toggleTheme" :is-dark-mode="isDarkMode" />
+    <main class="page-wrapper">
+      <h1>Våra medarbetare</h1>
+      <p>
+        Vi har för närvarande <b>{{ totalEntries }}</b> fantastiska anställda som arbetar
+        hos oss!
+      </p>
 
-    <EmployeesList :employees="employees" />
-    <Pagination
-      :current-page="currentPage"
-      :last-page="totalPages"
-      :available-pages="availablePages"
-      @goto="page => goToPage(page)"
-    />
-  </main>
-  <SiteFooter />
+      <EmployeesList :employees="employees" />
+      <Pagination
+        :current-page="currentPage"
+        :last-page="totalPages"
+        :available-pages="availablePages"
+        @goto="page => goToPage(page)"
+      />
+    </main>
+    <SiteFooter />
+  </div>
 </template>
 
 <script setup>
@@ -24,6 +26,12 @@ import Pagination from "./components/Pagination.vue";
 import EmployeesList from "./components/EmployeesList.vue";
 import SiteHeader from "./components/SiteHeader.vue";
 import SiteFooter from "./components/SiteFooter.vue";
+
+const isDarkMode = ref(false);
+
+const toggleTheme = () => {
+  isDarkMode.value = !isDarkMode.value;
+};
 
 const employees = ref([]);
 const totalEntries = ref(0);

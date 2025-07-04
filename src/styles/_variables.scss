@@ -1,7 +1,19 @@
+:root {
+  // Breakpoints
+  --breakpoint-2xs: 440px;
+  --breakpoint-xs: 600px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 960px;
+}
+
+$breakpoint-2xs: 400px;
+$breakpoint-xs: 600px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 960px;
+
 // Color palette
-$primary: purple;
-$primary-dark: rgb(100, 0, 100);
-$secondary: yellow;
+$primary: #00957f;
+$secondary: #df4f5f;
 
 $text-dark: rgba(255, 255, 255, 0.87);
 $bg-dark: #242424;
@@ -19,10 +31,6 @@ $font-weight-medium: 500;
 
 $h1-font-size: 3.2em;
 $h1-line-height: 1;
-
-// Breakpoints
-$mobile-breakpoint: 768px;
-$desktop-breakpoint: 960px;
 
 // Layout
 $page-max-width: 960px;

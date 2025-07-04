@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @mixin dark {
   @media (prefers-color-scheme: dark) {
     @content;
@@ -7,5 +9,16 @@
 @mixin light {
   @media (prefers-color-scheme: light) {
     @content;
+  }
+}
+
+@mixin btn-variant($bg-color, $text-color: white) {
+  background-color: $bg-color;
+  color: $text-color;
+  
+  &:hover {
+    background-color: color.adjust($bg-color, $lightness: 7%);
+    border-color: $bg-color;
+    color: $text-color;
   }
 }

@@ -3,7 +3,7 @@
   <main class="page-wrapper">
     <h1>Våra medarbetare</h1>
     <p>
-      Vi har för närvarande {{ totalEntries }} fantastiska anställda som arbetar
+      Vi har för närvarande <b>{{ totalEntries }}</b> fantastiska anställda som arbetar
       hos oss!
     </p>
 
@@ -32,10 +32,25 @@ const currentPage = ref(0);
 const windowWidth = ref(window.innerWidth);
 
 const ENTRIES_PER_PAGE = 6;
-const MOBILE_BREAKPOINT = 768;
+
+// Get breakpoints from CSS custom properties
+const getBreakpoint = (name) => {
+  const value = getComputedStyle(document.documentElement).getPropertyValue(`--breakpoint-${name}`);
+  return parseInt(value);
+};
 
 const maxVisiblePages = computed(() => {
-  return windowWidth.value <= MOBILE_BREAKPOINT ? 5 : 7;
+  const width = windowWidth.value;
+  
+  if (width <= getBreakpoint("2xs")) {
+    return 1;
+  } else if (width <= getBreakpoint("xs")) {
+    return 3;
+  } else if (width <= getBreakpoint("sm")) {
+    return 5;
+  } else {
+    return 7;
+  }
 });
 
 const availablePages = computed(() => {

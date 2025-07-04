@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "_variables" as *;
 @use "_mixins" as *;
 
@@ -25,25 +26,13 @@
   box-sizing: border-box;
 }
 
-a {
-  font-weight: $font-weight-medium;
-  color: $primary;
-  text-decoration: inherit;
-  
-  &:hover {
-    color: $primary-dark;
-    
-    @include dark {
-      color: $primary;
-    }
-  }
-}
-
 body {
   margin: 0;
   min-width: $app-min-width;
   min-height: 100vh;
 }
+
+// Typography
 
 h1 {
   font-family: $heading-font;
@@ -52,47 +41,111 @@ h1 {
   margin-block-end: .5rem;
 }
 
+
+a {
+  font-weight: $font-weight-medium;
+  color: $primary;
+  text-decoration: inherit;
+  
+  &:hover {
+    color: color.adjust($primary, $lightness: 10%);
+    
+    @include dark {
+      color: $primary;
+    }
+  }
+}
+
+// Layout
+
+#app {
+  margin: 0 auto;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: $page-max-width;
+  margin-inline: auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+// Components
+
+.card {
+  padding: 2rem;
+}
+
 button, .btn {
   border-radius: $border-radius;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
   display: flex;
-  gap: .5rem;
+  gap: .5em;
   justify-content: center;
   align-items: center;
   
   // Light mode
   background-color: #f9f9f9;
   color: #213547;
-  
-  @include dark {
-    background-color: #1a1a1a;
-    color: white;
-  }
-  
+
   &:hover {
     color: #1a1a1a;
-    border-color: #646cff;
+    border-color: $primary;
 
     @include dark {
       color: white;
     }
   }
+  
+  @include dark {
+    background-color: #1a1a1a;
+    color: white;
+  }
+
+  &.btn-sm {
+    font-size: .9rem;
+  }
+
+  &.btn-primary {
+    @include btn-variant($primary, white);
+  }
+  
+  &.btn-secondary {
+    @include btn-variant($secondary, white);
+  }
+
+  &.btn-icon {
+    padding: .4em;
+    background: transparent;
+    color: white;
+    font-size: 1.2rem;
+
+    &:hover {
+      color: white;
+      border-color: color.adjust(white, $alpha: -0.8);
+      background: color.adjust(white, $alpha: -0.9);
+    }
+  }
 
   &:disabled {
-    color: gray;
+    opacity: .4;
+    $color: #9f9f9f;
+    // color: $color;
 
-        &:hover {
+    &:hover {
       border-color: transparent;
-      color: gray;
+      // color: $color;
+      cursor: default;
       
       @include dark {
-        color: gray;
+        color: $color;
       }
     }
   }
@@ -103,22 +156,8 @@ button, .btn {
   }
 }
 
-.card {
-  padding: 2em;
-}
 
-#app {
-  margin: 0 auto;
-}
-
-.page-wrapper {
-  width: 100%;
-  max-width: $page-max-width;
-  margin-inline: auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-}
+// Utilities
 
 .text-dark {
   color: white;
@@ -126,4 +165,8 @@ button, .btn {
   a {
     color: white;
   }
+}
+
+.text-center {
+  text-align: center;
 }

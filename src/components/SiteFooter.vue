@@ -1,12 +1,34 @@
 <template>
   <footer class="footer text-dark">
-    <a href="https://github.com/idaohlen/" target="_blank">Ida Öhlén</a>
+    Made with Vue.js by
+    <a href="https://github.com/idaohlen/" target="_blank" class="btn btn-icon">
+      <Icon icon="mdi:github" class="icon" width="24" />
+      Ida Öhlén
+    </a>
   </footer>
 </template>
-<style lang="scss">
+
+<script setup>
+import { Icon } from "@iconify/vue";
+</script>
+
+<style lang="scss" scoped>
+
 .footer {
   background: $primary;
   padding: 2rem;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: .5rem;
+}
+
+.btn-icon {
+  font-size: 1rem;
+  padding-inline: .6em;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
 }
 </style>
